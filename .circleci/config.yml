@@ -42,6 +42,69 @@ workflows:
             - test_dashboard
             - build_go_images
             - build_dashboard
+      - local_e2e_tests_2:
+          <<: *build_always
+          requires:
+            - test_go
+            - test_dashboard
+            - build_go_images
+            - build_dashboard
+      - local_e2e_tests_3:
+          <<: *build_always
+          requires:
+            - test_go
+            - test_dashboard
+            - build_go_images
+            - build_dashboard
+      - local_e2e_tests_4:
+          <<: *build_always
+          requires:
+            - test_go
+            - test_dashboard
+            - build_go_images
+            - build_dashboard
+      - local_e2e_tests_5:
+          <<: *build_always
+          requires:
+            - test_go
+            - test_dashboard
+            - build_go_images
+            - build_dashboard
+      - local_e2e_tests_6:
+          <<: *build_always
+          requires:
+            - test_go
+            - test_dashboard
+            - build_go_images
+            - build_dashboard
+      - local_e2e_tests_7:
+          <<: *build_always
+          requires:
+            - test_go
+            - test_dashboard
+            - build_go_images
+            - build_dashboard
+      - local_e2e_tests_8:
+          <<: *build_always
+          requires:
+            - test_go
+            - test_dashboard
+            - build_go_images
+            - build_dashboard
+      - local_e2e_tests_9:
+          <<: *build_always
+          requires:
+            - test_go
+            - test_dashboard
+            - build_go_images
+            - build_dashboard
+      - local_e2e_tests_10:
+          <<: *build_always
+          requires:
+            - test_go
+            - test_dashboard
+            - build_go_images
+            - build_dashboard
       - GKE_1_15_MASTER:
           <<: *build_on_master
           requires:
@@ -289,6 +352,69 @@ jobs:
       - checkout
       - run: REPO_DOMAIN=kubeapps REPO_NAME=kubeapps ./script/create_release.sh ${CIRCLE_TAG}
   local_e2e_tests:
+    machine: true
+    environment:
+      HELM_VERSION: "v3.0.2"
+      KUBEAPPS_DB: "postgresql"
+      TEST_UPGRADE: "1"
+    <<: *local_e2e_steps
+  local_e2e_tests_2:
+    machine: true
+    environment:
+      HELM_VERSION: "v3.0.2"
+      KUBEAPPS_DB: "postgresql"
+      TEST_UPGRADE: "1"
+    <<: *local_e2e_steps
+  local_e2e_tests_3:
+    machine: true
+    environment:
+      HELM_VERSION: "v3.0.2"
+      KUBEAPPS_DB: "postgresql"
+      TEST_UPGRADE: "1"
+    <<: *local_e2e_steps
+  local_e2e_tests_4:
+    machine: true
+    environment:
+      HELM_VERSION: "v3.0.2"
+      KUBEAPPS_DB: "postgresql"
+      TEST_UPGRADE: "1"
+    <<: *local_e2e_steps
+  local_e2e_tests_5:
+    machine: true
+    environment:
+      HELM_VERSION: "v3.0.2"
+      KUBEAPPS_DB: "postgresql"
+      TEST_UPGRADE: "1"
+    <<: *local_e2e_steps
+  local_e2e_tests_6:
+    machine: true
+    environment:
+      HELM_VERSION: "v3.0.2"
+      KUBEAPPS_DB: "postgresql"
+      TEST_UPGRADE: "1"
+    <<: *local_e2e_steps
+  local_e2e_tests_7:
+    machine: true
+    environment:
+      HELM_VERSION: "v3.0.2"
+      KUBEAPPS_DB: "postgresql"
+      TEST_UPGRADE: "1"
+    <<: *local_e2e_steps
+  local_e2e_tests_8:
+    machine: true
+    environment:
+      HELM_VERSION: "v3.0.2"
+      KUBEAPPS_DB: "postgresql"
+      TEST_UPGRADE: "1"
+    <<: *local_e2e_steps
+  local_e2e_tests_9:
+    machine: true
+    environment:
+      HELM_VERSION: "v3.0.2"
+      KUBEAPPS_DB: "postgresql"
+      TEST_UPGRADE: "1"
+    <<: *local_e2e_steps
+  local_e2e_tests_10:
     machine: true
     environment:
       HELM_VERSION: "v3.0.2"
