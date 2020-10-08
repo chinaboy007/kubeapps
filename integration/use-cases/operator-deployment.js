@@ -29,12 +29,12 @@ test("Deploys an Operator", async () => {
 
   await utils.retryAndRefresh(page, 10, async () => {
     // Filter out charts to search only for the prometheus operator
-    await expect(page).toClick("label", { text: "Operators" });
+    await page.goto(getUrl("/#/c/default/ns/kubeapps/catalog?Type=Operators"));
 
     await expect(page).toMatch("Prometheus");
-
-    await expect(page).toClick(".info-card-header", { text: "Prometheus" });
   });
+
+  await expect(page).toClick(".info-card-header", { text: "Prometheus" });
 
   await expect(page).toClick("cds-button", { text: "Deploy" });
 
@@ -47,7 +47,10 @@ test("Deploys an Operator", async () => {
 
   await expect(page).toClick("cds-button", { text: "Deploy" });
 
-  await expect(page).toMatch("Ready");
+  await utils.retryAndRefresh(page, 10, async () => {
+    // The resulting deployments may take a bit to appear
+    await expect(page).toMatch("Ready");
+  });
 
   // Delete
   await expect(page).toClick("cds-button", { text: "Delete" });

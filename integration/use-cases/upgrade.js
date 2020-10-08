@@ -42,10 +42,14 @@ test("Upgrades an application", async () => {
 
   await expect(page).toMatchElement("#replicaCount-1", { value: 2 });
 
+  await new Promise((r) => setTimeout(r, 500));
+
   await expect(page).toSelect(
     'select[name="chart-versions"]',
     latestChartVersion
   );
+
+  await new Promise((r) => setTimeout(r, 500));
 
   await expect(page).toMatchElement("#replicaCount-1", { value: 2 });
 
