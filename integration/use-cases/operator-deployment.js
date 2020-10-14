@@ -32,11 +32,11 @@ test("Deploys an Operator", async () => {
     await page.goto(getUrl("/#/c/default/ns/kubeapps/catalog?Type=Operators"));
 
     await expect(page).toMatch("Prometheus");
+
+    await expect(page).toClick(".info-card-header", { text: "Prometheus" });
+
+    await expect(page).toClick("cds-button", { text: "Deploy" });
   });
-
-  await expect(page).toClick(".info-card-header", { text: "Prometheus" });
-
-  await expect(page).toClick("cds-button", { text: "Deploy" });
 
   await expect(page).toMatch("Installation Values");
 
